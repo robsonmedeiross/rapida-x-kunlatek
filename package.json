@@ -9,6 +9,7 @@
   "author": "Kunlatek",
   "license": "ISC",
   "dependencies": {
-    "pluralize": "^8.0.0"
+    "pluralize": "^8.0.0",
+    "uuid": "^9.0.0"
   }
 }
