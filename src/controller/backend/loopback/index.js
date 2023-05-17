@@ -37,7 +37,6 @@ takeElements = async (project, object) => {
       if (key === "elements") {
         const elements = object[key];
         elements.forEach((element) => {
-          console.log(element);
           // createCodeOverElement(project,element)
         });
       }

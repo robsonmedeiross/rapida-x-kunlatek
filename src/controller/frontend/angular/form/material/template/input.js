@@ -1,22 +1,8 @@
+const attributes = require("../../../utils/form-attribute");
+
 const createInputCode = async (project, element) => {
-  const input = element;
-  const dataType = input.dataType;
-  const name = input.name;
-  const label = input.label;
-  const tooltip = input.tooltip ? `matTooltip="${input.tooltip}"` : "";
-  const placeholder = input.placeholder ? `placeholder="${input.placeholder}"` : "";
-  const isRequired = input.isRequired ? "required" : "";
-  const conditions = input.conditions ? `*ngIf="${name}Condition"` : "";
-  const validators = input.validators;
-  const value = input.value ? input.value : "";
-  const width = input.width ? input.width : "";
-  const isDisabled = input.isDisabled ? "disabled" : "";
-  const isAutoFocus = input.isAutoFocus ? input.isAutoFocus : "";
-  // const arrayId = mappedArrayInInput ? mappedArrayInInput[mappedArrayInInput.length - 1].name : undefined;
-  const callMethod = input.apiRequest ? setCallToMethodOnFocus(input, mappedArrayInInput) : "";
-  const mask = input.mask ? input.mask : "";
-  const isMultipleLines = input.isMultipleLines;
-  
+  const attribute = attributes.setAttribute(element);
+
   let code = "";
 
   // Skeleton
@@ -30,21 +16,24 @@ const createInputCode = async (project, element) => {
       break;
   
     default:
-      if (isMultipleLines) {
+      if (attribute.isMultipleLines) {
 
       }
 
-      if (!isMultipleLines) {
+      if (!attribute.isMultipleLines) {
         code += `
-        <mat-form-field ${conditions}>
+        <mat-form-field 
+          ${attribute.conditions}
+        >
           <mat-label>${label}</mat-label>
-          <input matInput type="${dataType}" formControlName="${name}" 
-          ${placeholder} 
-          ${tooltip} 
-          ${isRequired} 
-          ${isDisabled} 
-          ${mask}
-          ${callMethod}
+          <input matInput type="${attribute.dataType}" 
+          formControlName="${attribute.name}" 
+          ${attribute.placeholder} 
+          ${attribute.tooltip} 
+          ${attribute.isRequired} 
+          ${attribute.isDisabled} 
+          ${attribute.mask}
+          ${attribute.callMethod}
           autocomplete="new-password">
         </mat-form-field>
         `;
@@ -53,7 +42,7 @@ const createInputCode = async (project, element) => {
   }
   
   return code;
-}
+};
 
 module.exports = {
   createInputCode

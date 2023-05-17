@@ -1,38 +1,29 @@
-const uuidv4 = require("uuid");
-
-const defaultAttributes = {
-  id: uuidv4(), // Defaulting to uuid for now
-  options: [],
-  conditions: "",
-  label: "",
-  isAsync: false,
-};
-
-const componentBaseCode = (attributes = defaultAttributes) => `
-  <mat-autocomplete #${attributes.id}="matAutocomplete" ${
-  attributes.conditions
-}>
-    <mat-label>${attributes.label}</mat-label>
-
-    <input type="text"
-        placeholder="${attributes.placeholder}"
-        matInput
-        [formControl]="${attributes.name}"
-        [matAutocomplete]="${attributes.id}">
-
-    <mat-option *ngFor="let option of ${attributes.id}Options${
-  attributes.isAsync ? " | async" : ""
-}" [value]="option.value">
-      {{option.name}}
-    </mat-option>
-  </mat-autocomplete>
-`;
+const attributes = require("../../../utils/form-attribute");
 
 const createAutocompleteCode = async (project, element) => {
-  let code = componentBaseCode(element);
+  const attribute = attributes.setAttribute(element);
 
+  // let code = `
+  //   <mat-autocomplete 
+  //     #${attribute.id}="matAutocomplete" 
+  //     ${attribute.conditions}>
+  //     <mat-label>${attribute.label}</mat-label>
+
+  //     <input type="text"
+  //         placeholder="${attribute.placeholder}"
+  //         matInput
+  //         [formControl]="${attribute.name}"
+  //         [matAutocomplete]="${attribute.id}">
+
+  //     <mat-option 
+  //       *ngFor="let option of ${attribute.id}Options${attributeisAsync ? " | async" : ""}" 
+  //       [value]="option.value">
+  //         {{option.name}}
+  //     </mat-option>
+  //   </mat-autocomplete>
+  // `;
   return code;
-};
+}
 
 module.exports = {
   createAutocompleteCode,
