@@ -15,15 +15,20 @@ const mapElementTypeToCreateCode = {
 const createArrayCode = async (project, element) => {
   const arrayOfElements = element.elements.reduce(
     (accumulator, currentValue) => {
-      const action = mapElementTypeToCreateCode[currentValue.elementType];
-      accumulator += action(project, currentValue);
+      const createCode = mapElementTypeToCreateCode[currentValue.elementType];
+
+      accumulator += createCode(project, currentValue);
 
       return accumulator;
     },
     ``
   );
 
-  return arrayOfElements;
+  return `
+    <ng-container [formGroup]="${element.name}Form">
+      ${arrayOfElements}
+    </ng-container>
+  `;
 };
 
 module.exports = {

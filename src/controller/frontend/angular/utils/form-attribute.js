@@ -5,7 +5,9 @@ const setAttribute = (element) => {
     name: element.name,
     label: element.label,
     tooltip: element.tooltip ? `matTooltip="${element.tooltip}"` : "",
-    placeholder: element.placeholder ? `placeholder="${element.placeholder}"` : "",
+    placeholder: element.placeholder
+      ? `placeholder="${element.placeholder}"`
+      : "",
     isRequired: element.isRequired ? "required" : "",
     conditions: element.conditions ? `*ngIf="${element.name}Condition"` : "",
     validators: element.validators, // TO-DO
@@ -16,11 +18,11 @@ const setAttribute = (element) => {
     // callMethod: element.apiRequest ? setCallToMethodOnFocus(input, mappedArrayInInput) : "",
     mask: element.mask ? element.mask : "",
     isMultipleLines: element.isMultipleLines,
-    multiple: element.multiple ? "multiple" : ""
-  }
+    multiple: element.multiple ? "multiple" : "",
+  };
   // const arrayId = mappedArrayInInput ? mappedArrayInInput[mappedArrayInelement.length - 1].name : undefined;
-}
+};
 
 module.exports = {
-  setAttribute
-}
+  setAttribute,
+};
