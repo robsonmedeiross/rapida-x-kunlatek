@@ -10,16 +10,22 @@ const createSelectCode = async (project, element) => {
       <mat-select formControlName="${attribute.name}" 
         ${attribute.tooltip} 
         ${attribute.isRequired} 
-        ${attribute.multiple}>
-        <mat-option *ngFor="let ${attribute.name}Item of ${attribute.name}SelectObject" [value]="${attribute.name}Item.value">
-          {{${attribute.name}Item.label}}
+        ${attribute.multiple} ${setCondition}>
+        <mat-option *ngFor="let ${attributes.name}Item of ${
+    attributes.name
+  }SelectObject" [value]="${attributes.name}Item.value">
+          {{${attributes.name}Item.label}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+    ${setFormFieldShimmer(
+      attributes.label,
+      conditions.replace("!isLoading", "isLoading")
+    )}
   `;
-  
+
   return code;
-}
+};
 
 module.exports = {
   createSelectCode
