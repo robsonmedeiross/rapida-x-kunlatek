@@ -2,7 +2,6 @@ const attributes = require("../../../utils/form-attribute");
 
 const createAutocompleteCode = async (project, element) => {
   const attribute = attributes.setAttribute(element);
-
   // let code = `
   //   <mat-autocomplete 
   //     #${attribute.id}="matAutocomplete" 
@@ -22,7 +21,7 @@ const createAutocompleteCode = async (project, element) => {
   //     </mat-option>
   //   </mat-autocomplete>
   // `;
-  return code;
+  return ``;
 }
 
 module.exports = {

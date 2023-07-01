@@ -1,28 +1,26 @@
 const attributes = require("../../../utils/form-attribute");
 
-const createInputCode = async (project, element) => {
+const createSelectCode = async (project, element) => {
   const attribute = attributes.setAttribute(element);
-  let code = "";
-
+  
   // Skeleton
-  code += `
+  return `
     <mat-form-field ${attribute.conditions}>
       <mat-label>${attribute.label}</mat-label>
       <mat-select formControlName="${attribute.name}" 
         ${attribute.tooltip} 
         ${attribute.isRequired} 
-        ${attribute.multiple} ${setCondition}>
-        <mat-option *ngFor="let ${attributes.name}Item of ${attributes.name}SelectObject" [value]="${attributes.name}Item.value">
-          {{${attributes.name}Item.label}}
+        ${attribute.multiple}>
+        <mat-option *ngFor="let ${attribute.name}Item of ${attribute.name}SelectObject" [value]="${attribute.name}Item.value">
+          {{${attribute.name}Item.label}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    ${setFormFieldShimmer(attributes.label, conditions.replace('!isLoading', 'isLoading'))}
   `;
   
   return code;
 }
 
 module.exports = {
-  createInputCode
+  createSelectCode
 }

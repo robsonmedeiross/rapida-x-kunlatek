@@ -1,7 +1,7 @@
-const createInputCode = async (project, element) => {
-
+const createArrayCode = async (project, element) => {
+  return ``;
 };
 
 module.exports = {
-  createInputCode
+  createArrayCode
 };

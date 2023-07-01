@@ -1,12 +1,12 @@
 const attributes = require("../../../utils/form-attribute");
 
-const createInputCode = async (project, element) => {
+const createInputCode = async (project,object, element) => {
   const attribute = attributes.setAttribute(element);
-
+  
   let code = "";
 
   // Skeleton
-  switch (dataType) {
+  switch (attribute.dataType) {
     case "file":
       
       break;
@@ -25,7 +25,7 @@ const createInputCode = async (project, element) => {
         <mat-form-field 
           ${attribute.conditions}
         >
-          <mat-label>${label}</mat-label>
+          <mat-label>${attribute.label}</mat-label>
           <input matInput type="${attribute.dataType}" 
           formControlName="${attribute.name}" 
           ${attribute.placeholder} 

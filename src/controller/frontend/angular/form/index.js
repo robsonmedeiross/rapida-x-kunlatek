@@ -2,9 +2,9 @@ const {createCodeOverMaterialUi} = require("./material/index");
 
 let code = "";
 
-const createCodeOverElement = (project, object, element) => {
+const createCodeOverElement = async (project, object, element) => {
   if (project.ui === "material") {
-    code += createCodeOverMaterialUi(project, object, element);
+    return await createCodeOverMaterialUi(project, object, element);
   }
 
   if (project.ui === "antdesign") {
