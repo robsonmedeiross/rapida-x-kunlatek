@@ -44,12 +44,6 @@ takeElements = async (project, object) => {
   }
 };
 
-startLoopbackCoding({
-  folder: "animation",
-  title: "Animação",
-  ui: "material",
-});
-
 module.exports = {
   startLoopbackCoding,
 };

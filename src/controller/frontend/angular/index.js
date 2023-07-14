@@ -43,15 +43,19 @@ const startAngularCoding = async (project) => {
 }
 
 const takeObject = async (project, filesInProjectFolderToSetParams) => {
+  const result = [];
   for (let i = 0; i < filesInProjectFolderToSetParams.length; i++) {
     const file = filesInProjectFolderToSetParams[i];
     
     if (file != '') {
       const string = fs.readFileSync(`${projectsPath}/${project.folder}/${file}`, "utf8");
       const object = JSON.parse(string);
-      return await takeElements(project, object);
+      result.push(await takeElements(project, object));
     }
   }
+  console.log(result, 56);
+  return false;
+  return result;
 }
 
 const takeElements = async (project, object) => {

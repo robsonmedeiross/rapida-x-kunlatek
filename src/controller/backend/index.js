@@ -1,6 +1,6 @@
 const {startLoopbackCoding} = require("./loopback/index");
 
-const loopback = async (project) => {  
+const loopback = async (project) => {
   await startLoopbackCoding(project);  
 }
 

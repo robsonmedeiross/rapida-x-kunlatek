@@ -41,10 +41,10 @@ createCodeOverMaterialUi = async (project, object, element) => {
       break;
 
     default:
-      console.error("There is no such kind of element")
+      console.error(`There is no such kind of element: ${element.elementType}`)
       break;
   }
-  console.log(templateCode);
+  
   const template = `
   <mat-card *ngIf="(isAddModule && updateOnePermission) || (!isAddModule && createOnePermission)">
     <mat-card-header>
